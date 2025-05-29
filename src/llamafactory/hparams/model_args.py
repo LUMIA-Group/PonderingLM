@@ -384,7 +384,26 @@ class ModelArguments(
 
     The class on the most right will be displayed first.
     """
-
+    ponderinglm: bool = field(
+        default=False,
+        metadata={"help": "Whether or not to use ponderinglm."},
+    )
+    pondering_steps: int = field(
+        default=1,
+        metadata={"help": "The number of pondering steps."},
+    )
+    scale_embeds: bool = field(
+        default=False,
+        metadata={"help": "Whether or not to scale the embeddings."},
+    )
+    mutiply_pondering_steps: bool = field(
+        default=False,
+        metadata={"help": "Whether or not to multiply the pondering steps."},
+    )
+    checkpoint_num_layers: int = field(
+        default=100,
+        metadata={"help": "The number of layers to checkpoint."},
+    )
     compute_dtype: Optional[torch.dtype] = field(
         default=None,
         init=False,

@@ -707,6 +707,22 @@
       "prompt": "content"
     }
   },
+  "minipile": {
+    "hf_hub_url": "JeanKaddour/minipile",
+    "ms_hub_url": "AI-ModelScope/minipile",
+    "split": "train",
+    "columns": {
+      "prompt": "text"
+    }
+  },
+  "testpile": {
+    "hf_hub_url": "mit-han-lab/pile-val-backup",
+    "ms_hub_url": "AI-ModelScope/pile-val-backup",
+    "split": "validation",
+    "columns": {
+      "prompt": "text"
+    }
+  },
   "starcoder_python": {
     "hf_hub_url": "bigcode/starcoderdata",
     "ms_hub_url": "AI-ModelScope/starcoderdata",

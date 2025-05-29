@@ -37,7 +37,30 @@ from .model_utils.mod import convert_pretrained_model_to_mod, load_mod_pretraine
 from .model_utils.unsloth import load_unsloth_pretrained_model
 from .model_utils.valuehead import load_valuehead_params
 from .patcher import patch_config, patch_model, patch_processor, patch_tokenizer, patch_valuehead_model
+from .modeling.modeling_llama import LlamaForCausalLM as PonderingLlamaForCausalLM
+from .modeling.modeling_gpt_neox import GPTNeoXForCausalLM as PonderingGPTNeoXForCausalLM
+from .modeling.modeling_gpt2 import GPT2LMHeadModel as PonderingGPT2ForCausalLM
 
+def patch_llama():
+    """
+    Replace LlamaForCausalLM in transformers library with our custom version
+    """
+    import transformers.models.llama.modeling_llama as llama_module
+    llama_module.LlamaForCausalLM = PonderingLlamaForCausalLM
+
+def patch_gpt_neox():
+    """
+    Replace GPTNeoXForCausalLM in transformers library with our custom version
+    """
+    import transformers.models.gpt_neox.modeling_gpt_neox as gpt_neox_module
+    gpt_neox_module.GPTNeoXForCausalLM = PonderingGPTNeoXForCausalLM
+
+def patch_gpt2():
+    """
+    Replace GPT2ForCausalLM in transformers library with our custom version
+    """
+    import transformers.models.gpt2.modeling_gpt2 as gpt2_module
+    gpt2_module.GPT2LMHeadModel = PonderingGPT2ForCausalLM
 
 if is_transformers_version_greater_than("4.46.0"):
     from transformers import AutoModelForImageTextToText
@@ -127,11 +150,19 @@ def load_model(
     add_valuehead: bool = False,
 ) -> "PreTrainedModel":
     r"""Load pretrained model."""
+    if model_args.ponderinglm is True:
+        patch_llama()
+        patch_gpt_neox()
+        patch_gpt2()
     init_kwargs = _get_init_kwargs(model_args)
     config = load_config(model_args)
     patch_config(config, tokenizer, model_args, init_kwargs, is_trainable)
     apply_liger_kernel(config, model_args, is_trainable, require_logits=(finetuning_args.stage not in ["pt", "sft"]))
-
+    config.ponderinglm = model_args.ponderinglm
+    config.pondering_steps = model_args.pondering_steps
+    config.scale_embeds = model_args.scale_embeds
+    config.mutiply_pondering_steps = model_args.mutiply_pondering_steps
+    config.checkpoint_num_layers = model_args.checkpoint_num_layers
     model = None
     lazy_load = False
     if model_args.use_unsloth:
