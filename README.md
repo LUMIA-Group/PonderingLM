@@ -9,13 +9,13 @@ We introduce the **Pondering Language Model**, which enhances language models by
 For more details, please refer to our [paper](https://arxiv.org/abs/2505.20674)!
 
 <p align="center">
-  <img src="assets/overall.png" alt="PonderingLM Overview">
+  <img src="assets/overall.png" alt="PonderingLM Overview" width="400">
 </p>
 
 ## Code Structure
 
-- The core model modifications are located in `PonderingLM/src/llamafactory/model/modeling`. We provide `modeling_xxx.py` files for the pondering versions of Pythia, GPT2, and LLaMA, as described in our paper.
-- The scripts for running our experiments can be found in `PonderingLM/experiments_jobs`.
+- The core model modifications are located in [`PonderingLM/src/llamafactory/model/modeling`](https://github.com/hzby/PonderingLM/tree/main/src/llamafactory/model/modeling). We provide `modeling_xxx.py` files for the pondering versions of Pythia, GPT2, and LLaMA, as described in our paper.
+- The scripts for running our experiments can be found in [`PonderingLM/experiments_jobs`](https://github.com/hzby/PonderingLM/tree/main/experiments_jobs).
 
 ## Environment Setup
 
