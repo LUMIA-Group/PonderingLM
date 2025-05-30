@@ -135,9 +135,9 @@ If you have any questions or encounter issues, feel free to [open an issue](#) o
 If you find this work useful, please consider citing our paper:
 
 ```bibtex
-@article{zeng2025pretraininglanguagemodelsponder,
+@article{zeng2025pretraining,
   title={Pretraining Language Models to Ponder in Continuous Space},
-  author={Boyi Zeng, Shixiang Song, Siyuan Huang, Yixuan Wang, He Li, Ziwei He, Xinbing Wang, Zhiyu Li, Zhouhan Lin},
+  author={Zeng, Boyi and Song, Shixiang and Huang, Siyuan and Wang, Yixuan and Li, He and He, Ziwei and Wang, Xinbing and Li, Zhiyu and Lin, Zhouhan},
   journal={arXiv preprint arXiv:2505.20674},
   year={2025}
 }
