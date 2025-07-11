@@ -27,7 +27,8 @@ cd PonderingLM
 conda create -n ponderinglm python=3.10
 conda activate ponderinglm
 pip install -e ".[torch,metrics,deepspeed]"
-conda install nvidia/label/cuda-12.1.0::cuda-toolkit
+pip install wandb
+conda install cuda=12.1.0 -c nvidia
 pip install flash-attn==2.7.2.post1 --no-build-isolation
 ```
 
