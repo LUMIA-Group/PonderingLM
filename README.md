@@ -121,7 +121,9 @@ The main experiment scripts are provided in `PonderingLM/experiments_jobs`.
 
 ## Checkpoints
 
-We release our largest pondering Pythia-1.4B model, trained on 300B tokens from the Pile, on Hugging Face: [https://huggingface.co/zeng123/PonderingPythia-1.4B](https://huggingface.co/zeng123/PonderingPythia-1.4B).
+We release our two largest models, Pondering Pythia-1.4B and Pondering Pythia-2.8B (which outperforms Pythia-6.9B), both trained on 300B tokens from the Pile, on Hugging Face:  
+[https://huggingface.co/zeng123/PonderingPythia-1.4B](https://huggingface.co/zeng123/PonderingPythia-1.4B) 
+[https://huggingface.co/zeng123/PonderingPythia-2.8B](https://huggingface.co/zeng123/PonderingPythia-2.8B).
 
 ## Evaluation
 
